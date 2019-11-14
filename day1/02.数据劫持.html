@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据劫持</title>
+</head>
+<body>
+    <div class="wo" id="wo" name='bushi'></div>
+</body>
+<script src="vue.js"></script>
+
+<script>
+
+  const book ={
+      name:'百科全书'
+      
+
+  }
+  book.name = "《"+book.name+"》";
+
+  console.log(book.name);
+  var val = "";
+  Object.defineProperty(book,'name',{
+      set(vlaue) {
+        val = '《'+vlaue+'》';
+      },
+      get() {
+        return val;
+      }
+  })
+book.name = 'js从入门到吃土';
+
+  console.log(book.name);
+  
+
+</script>
+</html>

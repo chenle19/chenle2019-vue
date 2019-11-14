@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>vue数据双向绑定</title>
+    <script src="vue.js"></script>
 </head>
 <body>
+    <div id="app">
+        <input type="text" v-model="message">
+        {{ message }}
+    </div>
     
 </body>
+
+<script>
+    const app = new Vue({
+        el:"#app",//element
+        data:{//提供给视图的数据
+            message:"hello Vue"
+        }
+    })
+
+</script>
 </html>
