@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        姓名:
+        <input type="text" placeholder="用户名" v-model='username'>{{usernamestate}} <br/><br>
+        密码:
+        <input type="password" placeholder="密码" v-model='password'>{{passwordstate}}  <br/><br>
+        
+
+
+                <br><br/><input type="button" value="获取信息" @click='getData'><br/>
+    </div>
+    
+</body>
+<script src="vue.js"></script>
+ <script>
+     const app = new Vue({
+         el:"#app",
+         data:{
+            username:'',
+            password: '',
+       
+         },
+         computed:{
+            usernamestate (){
+                if (this.username === ""){
+                    return ""
+                }
+                else if(this.username.length<6){
+                    return '×'
+                }else{
+                    return '√'
+                }
+             },
+             passwordstate (){
+                if (this.username === ""){
+                    return ""
+                }
+                else if(this.password.length<6){
+                    return '×'
+                }else{
+                    return '√'
+                }
+             }
+         },
+         methods:{
+             getData () {
+                 const obj = {
+                     用户: this.username,
+                     密码: this.password,
+                    }
+                 console.log(obj)
+                 
+             }
+            
+         }
+     })
+ 
+ // min="1" 最小值是1  step='1' 每次增长减少必须是1而不是其他小数
+ 
+
+
+ /*
+  v-model.lazy 当输入框失去焦点 或 回车键 才会同步 {{data}} 的值
+   v-model.lazy.trim  前后空格去除
+    v-model.
+ 
+ 
+ */
+ </script>
+</html>

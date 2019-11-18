@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+             <div :msg="asd" :class="b1"></div> 
+             <p>v-bind 更改属性值</p>
+             <img :src="img" alt="加载失败" title="男孩">
+        </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+
+const app = new Vue({ 
+    el: '#app',
+    data: { 
+        asd:'a',
+        b1:"b2",
+        img:"a",
+         } 
+
+
+})
+
+
+</script>
+</html>

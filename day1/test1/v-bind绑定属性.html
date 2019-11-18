@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+             
+              <div v-bind:msg="msg">利用vue的绑定属性，给一个名为msg的属性，添加了一个值为msg的变量</div>
+               1<img src="img" alt=""> 
+               2<img :src="img" alt="">
+        </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+
+const app = new Vue({ 
+    el: '#app',
+    data: { 
+        msg: 'hello vue',
+        img: 'https://cn.vuejs.org/images/logo.png'
+         } 
+
+
+})
+
+
+</script>
+</html>

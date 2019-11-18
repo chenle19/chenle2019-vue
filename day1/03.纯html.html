@@ -8,8 +8,10 @@
     <script src="vue.js"></script>
 </head>
 <body>
-    <div id="app">
-        {{ message }} --- {{ num }} --- {{ obj.a }} --- {{ arr[2] }}
+    <div id="app"  >
+        {{ message }}
+        <div v-html="message"></div>
+        <div v-html='message'></div>
     </div>
     
 </body>
@@ -18,15 +20,8 @@
     const app = new Vue({
         el:"#app",//element
         data:{//提供给视图的数据
-            message:"hello Vue",
-            num:100,
-            obj:{
-                a:"陈乐老实人",
-                b:"真的很老实"
-            },
-            arr:[1,2,3,4,4,5,2]
-
-        }
+            message:'<h1>hello Vue</h1>',
+           }
     })
 
 </script>

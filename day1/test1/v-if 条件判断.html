@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <div v-if=' Math.random() > 0.5'>大于0.5</div>
+        <div v-else>不大于0.5</div>
+    </div>
+    <div id="nnn">
+        <div v-if="type == 'A'">A</div>
+        <div v-else-if="type == 'B'">B</div>
+        <div v-else-if="type == 'C'">C</div>
+        <div v-else>not's A/B/C</div>
+
+    </div>
+    
+</body>
+<script src="../vue.js"></script>
+<script>
+
+const app = new Vue({
+    el:"#app",
+    data:{
+        
+    },
+    methods:{
+        
+    }
+})
+const nnn = new Vue({
+    el:"#nnn",
+    data:{
+        type:'C'
+    },
+    methods:{
+        
+    }
+})
+
+
+
+
+</script>
+</html>

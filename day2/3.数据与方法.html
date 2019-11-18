@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+               <!-- {{name}} -->
+            {{id}}
+        </div>
+</body>
+<script src='vue.js'></script>
+<script>
+//     var id = {name:'chenle'};
+//  var vm = new Vue({
+//      el:'#app',
+//      data:id
+//  })
+// console.log(vm.$el === document.getElementById('app'));
+//  console.log(vm.$data === id);
+//  vm.name= '123';
+//  id.name= '我草'
+// data : id  直接对等的情况下 vm.name 和id.name  是一样的 在html输出 {{name}} 可以直接显示出 vlaue值
+//但是直接{{id}} 则会找不到值 ，因为 data等于id ，只能查找data下面的值
+
+/*第二种情况data：{id}，id是data下的属性*/
+
+var id = {name:'chenle'};
+// Object.freeze(id);//阻止修改现有的属性，但是如果整个id都修改了，比如vm.id ={age:10}，属性还是能修改 ,id = {age:10}还是不能修改的
+ var vm = new Vue({
+     el:'#app',
+     data:{id}
+ })
+//这种情况下 {{name}} 是查找不到的
+//通过在HTML输入{{id}}可以看到{name：'chenle'}
+//{{id.name}} 会显示chenle 
+//可以通过id.name='谢莹莹' 来响应html
+//也可以通过vm.id.name = "s"  来修改值
+//vm.id ={age:10}通过这样来修改id 
+// vm.id.name = "s"
+ vm.id ={age:10}
+console.log(vm.$el === document.getElementById('app'));
+ console.log(vm.$data.id === vm.id);
+ vm.$watch('name', function (newValue, oldValue) {
+  // 这个回调将在 `vm.a` 改变后调用
+  console.log(oldValue);
+  
+})
+
+
+</script>
+</html>

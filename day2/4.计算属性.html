@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ fn1() }}  {{ fn1() }}   {{ fn1() }}
+        ------{{reverseMsg}} {{reverseMsg}} {{reverseMsg}}
+    </div>  
+    
+</body>
+<script src="vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            msg:'chenle niubi'
+        },
+        computed:{ //计算属性是一个函数，返回一个值，使用和data中的选项一样
+            reverseMsg () {
+                console.log('computed');//执行一次 --- 依赖性
+                return this.msg.split('').reverse().join('')
+            }
+        },
+        methods:{
+            fn1 (){
+                console.log('methods');//执行三次
+                
+             return this.msg.split('').reverse().join('')   
+            }
+        }
+
+
+
+    })
+//依赖性 指的是 需要计算的值 没有发生变化  就不用再次计算
+</script>
+</html>

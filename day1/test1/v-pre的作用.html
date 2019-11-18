@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+    <mark v-pre> {{msg}}</mark> 
+    <p>v-pre的作用是即使有编辑但是还是要跳过编辑，直接显示,即使在data里面定义了msg的值，也照样直接显示了{{msg}}的字样</p>
+    </div>
+    
+</body>
+<script src="../vue.js"></script>
+<script>
+
+const app = new Vue({
+    el:"#app",
+    data:{
+        msg:'asdasd'
+    },
+    methods:{
+        
+    }
+})
+
+
+
+</script>
+</html>

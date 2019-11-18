@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    <input type="text" @keydown.13="jp" @keyup.13 = 'aa'>
+    <button @click.ctrl="onClick">A</button>
+    <input @keyup.ctrl.67="clear">
+    <p>鼠标按下@keyup</p>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+
+var app = new Vue({
+     el:"#app",
+     data:{},
+     methods:{
+         
+         aa(){
+             alert(2);
+         },jp(e){
+            alert(1);
+         },
+         clear(){
+             alert(1);
+         },
+         onClick(){
+             alert(1);
+         }
+     }
+})
+
+/*
+.enter 回车键
+.tab
+.delete
+.esc
+.space
+.up
+.down
+.left
+.right
+@keydown.enter
+其他的通过 keyCodes
+e.keyCode == 13 是js的语法 回车键
+
+
+
+*/
+
+/*
+系统修饰键
+.ctrl
+.alt
+.shift
+.meta
+请注意修饰键与常规按键不同，在和 keyup 事件一起用时，事件触发时修饰键必须处于按下状态。换句话说，只有在按住 ctrl 的情况下释放其它按键，才能触发 keyup.ctrl。而单单释放 ctrl 也不会触发事件。如果你想要这样的行为，请为 ctrl 换用 keyCode：keyup.17。
+
+*/
+</script>
+</html>

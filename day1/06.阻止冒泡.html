@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #app{
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+    
+    
+    </style>
+</head>
+<body>
+    <div id="app" @click = "dj">
+        <button @click = "dj2">按钮一</button>
+        <button @click = "dj3">按钮二</button>
+    
+    <form  action="https://www.baidu.com/index.html" @submit.prevent= 'gobaidu1'>
+        <input type="submit" name="" id="" value="提交1" >
+
+    </form>
+    <form  action="https://www.baidu.com/index.html" @submit= 'gobaidu2'>
+        <input type="submit" name="" id="" value="提交2" @click="aa" >
+
+    </form>
+</div>
+</body>
+<script src="vue.js"></script>
+<script>
+    const app = new Vue({  
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+            dj(){
+                alert("box");
+            },
+            dj2(e){
+                e.stopPropagation();//dom操作 阻止冒泡
+                alert('按钮1')
+            },
+            dj3(){
+                alert('按钮2')
+            },
+            gobaidu1 (e) {
+                e.stopPropagation();
+                //e.preventDefault()// 阻止默认事件
+            },
+            gobaidu2 (e) {
+                e.stopPropagation();
+                e.preventDefault()// 阻止默认事件
+            },
+            
+        }
+    })
+    /*
+.stop
+.prevent
+.capture
+.self
+.once
+.passive
+.stop  
+
+.prevent    阻止默认事件 如跳转等
+
+.capture
+
+.self  只有自己才能触发事件 变相的阻止冒泡
+<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+<!-- 即事件不是从内部元素触发的 -->
+
+
+.once 事件只触发一次
+
+.passive
+Vue 还对应 addEventListener 中的 passive 选项提供了 .passive 修饰符。
+<!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 -->
+<!-- 而不会等待 `onScroll` 完成  -->
+<!-- 这其中包含 `event.preventDefault()` 的情况 -->
+<div v-on:scroll.passive="onScroll">...</div>
+不要把 .passive 和 .prevent 一起使用，因为 .prevent 将会被忽略，同时浏览器可能会向你展示一个警告。请记住，.passive 会告诉浏览器你不想阻止事件的默认行为。
+
+
+
+js中事件是会冒泡的，所以this是可以变化的，但event.target不会变化，它永远指向触发事件的DOM元素本身；
+    
+    
+    
+    */
+/*
+
+在事件处理程序中调用 event.preventDefault() 阻止默认事件或 event.stopPropagation() 阻止冒泡 是非常常见的需求。尽管我们可以在方法中轻松实现这点，但更好的方式是：方法只有纯粹的数据逻辑，而不是去处理 DOM 事件细节。
+*/
+/*
+使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 v-on:click.prevent.self 会阻止所有的点击，而 v-on:click.self.prevent 只会阻止对元素自身的点击。
+
+*/
+/*
+https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6
+*/
+</script>
+</html>

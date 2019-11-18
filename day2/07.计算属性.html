@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+            <input type="text" name="" id="" v-model='firstname'>+<input type="text" v-model='lastname'> =
+              {{ firstname }}{{lastname}}  {{ fullname }}
+
+        </div>
+</body>
+<script src='vue.js'></script>
+<script>
+    var id = {name:'chenle'};
+ const app = new Vue({
+     el:'#app',
+     data:{
+       firstname: '陈',
+       lastname: '乐',
+      
+        
+     },
+   
+     computed:{
+         fullname () {
+            return this.firstname+this.lastname;
+            //this.firstname.split('').concat(this.lastname.split('')).join('')
+             
+         }
+     },
+     methods:{
+        
+     }
+ })
+
+
+
+
+</script>
+</html>

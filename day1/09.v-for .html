@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+   
+    
+    
+    
+    </style>
+</head>
+<body>
+
+    <!-- <ul id="app">
+        <li v-for="(item,index) in aa "> 
+            
+            {{ item.msg}} ---{{aa[index]}}
+        </li>
+    </ul> -->
+    <ul id="app2">
+            <li v-for="(vlaue,name,index) in object">  
+               {{ name }} : {{ vlaue }} : {{ index }} 
+            </li>
+    </ul>
+    <p>name是key值,vlaue是vlaue值</p>
+</body>
+<script src="vue.js"></script>
+<script>
+//  <li v-for="(item,index) in aa ">  in可以用of代替
+// const app = new Vue({
+//     el:"#app",
+//     data:{
+//         aa:[{ msg:"asd"},{msg:"dasd"},{msg:"dzxc"},{msg:"asdv"},{msg:"auto"},{msg:"vedio"}]
+//     },
+//     methods:{
+        
+        
+//     }
+// })
+//在对象中使用v-for
+
+const app = new Vue({
+    el:"#app2",
+    data:{
+        object:{
+            name:'chenle',
+            age:'18',
+            sex:'man',
+            tel:'13394841221'
+        }
+    },
+    methods:{
+        
+        
+    }
+})
+/*
+name 就是key&vlaue 的key
+vlaue 就是key&vlaue vlaue
+index  是索引
+item 是每次遍历的值
+
+
+*/
+
+
+</script>
+</html>

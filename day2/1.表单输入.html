@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        姓名:
+        <input type="text" placeholder="用户名" v-model.lazy='username'>{{username}}<br/><br>
+        密码:
+        <input type="password" placeholder="密码" v-model='password'><br/><br>
+        年龄:
+        <input type="number" v-model.number = 'age' placeholder="年龄" min="1" step="1"><br/> <br>
+        邮箱:
+        <input type="email" name="" id="" placeholder="邮箱" v-model='email'><br/><br>
+        <span>性别:</span>
+        <label for="nan">男</label><input type="radio" name="sex" id="nan" v-model='sex' value="男"><label for="nv">女</label><input type="radio" name="sex" id="nv" v-model='sex' value="女"><br><br>
+        <span>爱好:</span>
+        <label for="hobby1">篮球</label>
+                <input type="checkbox" name="hobby" id="hobby1" v-model='hobby' value="篮球">
+        <label for="hobby2">排球</label>
+                <input type="checkbox" name="hobby" id="hobby2" v-model='hobby' value="排球"> 
+        
+        <label for="hobby3">乒乓球</label>
+                <input type="checkbox" name="hobby" id="hobby3" v-model='hobby' value="乒乓球"> 
+        
+        <label for="hobby4">足球</label>
+                <input type="checkbox" name="hobby" id="hobby4" v-model='hobby' value="足球"> 
+        
+        <label for="hobby5">网球</label>
+            <input type="checkbox" name="hobby" id="hobby5" v-model='hobby' value="网球"> 
+        
+        <label for="hobby6">台球</label>
+                <input type="checkbox" name="hobby" id="hobby6" v-model='hobby' value="台球"><br><br>
+            <span>阶段:</span>
+         <select name="" id="" v-model='lesson'>
+             <option value="" disabled>请选择</option>
+             <option value="1">一阶段</option>
+             <option value="2">二阶段</option>
+             <option value="3">三阶段</option>
+             <option value="4">四阶段</option>
+         </select><br><br>
+         个人简介:<br>
+         <textarea name="" id="" cols="40" rows="10" style="resize: none;" v-model='jieshao'></textarea>
+         <br><br>
+         <input type="checkbox" name="" v-model='flag' id="zzz"><label for="zzz">了解用户注册相关信息</label>
+
+
+                <br><br/><input type="button" value="获取信息" @click='getData'><br/>
+    </div>
+    
+</body>
+<script src="vue.js"></script>
+ <script>
+     const app = new Vue({
+         el:"#app",
+         data:{
+            username:'陈乐',
+            password: '33282',
+            age:'20',
+            email:'33282@qq.com',
+            hobby:['篮球','排球','乒乓球'],
+            sex:'男',
+            lesson:'2',
+            jieshao:'我是你爸爸',
+            flag:false
+         },
+         methods:{
+             getData () {
+                 const obj = {
+                     用户: this.username,
+                     密码: this.password,
+                     年龄: this.age,
+                     邮箱: this.email,
+                     爱好: this.hobby,
+                     性别: this.sex,
+                     介绍: this.jieshao
+                    }
+                 console.log(obj)
+                 
+             }
+            
+         }
+     })
+ 
+ // min="1" 最小值是1  step='1' 每次增长减少必须是1而不是其他小数
+ 
+
+
+ /*
+  v-model.lazy 当输入框失去焦点 或 回车键 才会同步 {{data}} 的值
+   v-model.lazy.trim  前后空格去除
+    v-model.
+ 
+ 
+ */
+ </script>
+</html>

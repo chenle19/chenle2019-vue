@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #app{
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+    
+    
+    
+    </style>
+</head>
+<body>
+
+    <div id="app" @click.left='ss' @click.right.prevent ='aa' @click.middle ='dd'>
+    
+    </div>
+    
+</body>
+<script src="vue.js"></script>
+<script>
+
+const app = new Vue({
+    el:"#app",
+    data:{
+        
+    },
+    methods:{
+        ss(){
+            alert("左键");
+        },
+        aa(){
+
+            alert("右键")
+        },
+        dd(){
+            alert("转轮")
+        }
+    }
+})
+
+
+
+</script>
+</html>
