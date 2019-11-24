@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+        <myapp></myapp>
+        </div>
+      
+</body>
+<template id="aapp">
+        <a>这里是app
+            <my-banna></my-banna>
+        </a>
+</template>
+<template id="x">
+        <a>这里是轮播图</a>
+</template>
+<script src='vue.js'></script>
+<script>
+     const Banna = {
+        template:'#x',
+    }
+    const APP = {
+        template:'#aapp',
+        components:{
+        'my-banna':Banna//必须先定义Banna组件 才可以注册banna组件
+    }
+       }
+   
+  
+
+ const app = new Vue({
+     el:'#app',
+     data:{},
+     components:{
+        'myapp':APP
+    }
+ })
+
+
+
+
+</script>
+</html>

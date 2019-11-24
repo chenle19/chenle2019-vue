@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+        <my-app></my-app>
+        </div>
+      
+</body>
+<template id="aapp">
+        <a>这里是app
+           <my-banna></my-banna>
+           <my-index></my-index>
+        </a>
+</template>
+<template id="bannatem">
+        <a>这里是轮播图
+            <button @click = 'getIndex(1)'>1</button>
+            <button @click = 'getIndex(2)'>2</button>
+            <button @click = 'getIndex(3)'>3</button>
+            <button @click = 'getIndex(4)'>4</button>
+            <button @click = 'getIndex(5)'>5</button>
+        </a>
+
+</template>
+<template id="indextem">
+    <a>
+        现在是第{{index}}张图
+    </a>
+</template>
+
+<script src='vue.js'></script>
+<script>
+    const bus = new Vue()
+    const Index = {
+        template: '#indextem',
+        data(){
+            return{
+                index:1
+            }
+        },
+        mounted () {
+            bus.$on('changeIndex',(index) =>{
+                console.log(index);
+                this.index = index;
+                
+            })
+        }
+    }
+    const Banna = {
+        template:'#bannatem',
+        methods:{
+            getIndex(index){
+                bus.$emit('changeIndex',index)
+            }
+
+        }
+    }
+    const APP = {
+        template:'#aapp',
+        components:{
+         'my-banna':Banna,//标签不能用大写
+         'my-index':Index
+     }  
+       }
+    
+  
+
+ const app = new Vue({
+     el:'#app',
+     data:{},
+     components:{
+         'my-app':APP
+     }
+    
+ })
+
+
+
+
+</script>
+</html>

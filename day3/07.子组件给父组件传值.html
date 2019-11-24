@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+        <my-app></my-app>
+        </div>
+      
+</body>
+<template id="aapp">
+        <a>这里是app
+           <my-banna @lalala='getData'></my-banna>
+        </a>
+</template>
+<template id="bannatem">
+        <a>这里是轮播图
+            <button @click='sendData'>发送消息</button>
+        </a>
+</template>
+<script src='vue.js'></script>
+<script>
+//子组件的某一个事件内部，通过this.$emit('事件名',传递的值)传递数据
+//父组件在调用子组件的地方，绑定了子组件自定义的事件的事件名，函数体记住不要加()
+//定义父组件的地方，实现函数体，函数体会带有默认的参数，参数的值就是子组件传递的值
+    const Banna = {
+        template:'#bannatem',
+        methods:{
+            sendData(){
+                this.$emit('lalala','sd')
+            }
+        }
+    }
+    const APP = {
+        template:'#aapp',
+        methods:{
+            getData(str){
+                console.log(str);
+                
+            }
+        },
+        components:{
+         'my-banna':Banna//标签不能用大写
+     }  
+       }
+    
+  
+
+ const app = new Vue({
+     el:'#app',
+     data:{},
+     components:{
+         'my-app':APP
+     }
+    
+ })
+
+
+
+
+</script>
+</html>

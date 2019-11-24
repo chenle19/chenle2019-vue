@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+        <mingyan></mingyan>
+        </div>
+      
+</body>
+<template id="a">
+        <a>这里是头部s {{msg}}</a>
+</template>
+<script src='vue.js'></script>
+<script>
+    const Header ={
+        template:'#a',
+        data(){
+           return{
+               msg:"狗就是狗，而人有时候不是人"
+           }
+        }
+    }
+ const app = new Vue({
+     el:'#app',
+     data:{},
+     components:{
+       
+        'mingyan':Header
+     }
+ })
+
+
+
+
+</script>
+</html>

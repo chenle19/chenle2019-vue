@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    <myheader></myheader>
+     </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    const Header= {
+        template: '<header>我是一个组件---<header>'
+    }//template模板
+
+    Vue.component('myheader',Header);//全局注册组件 标签大写显示不出来
+    const app = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        components:{
+            'myheader':Header
+        }
+
+        
+      
+    })
+
+</script>
+</html>

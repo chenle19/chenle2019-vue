@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+        <my-app></my-app>
+        </div>
+      
+</body>
+<template id="aapp">
+        <a>这里是app
+            <my-banna></my-banna>
+        </a>
+</template>
+<template id="bannatem">
+        <a>这里是轮播图</a>
+</template>
+<script src='vue.js'></script>
+<script>
+    const APP = {
+        template:'#aapp',
+       }
+    const Banna = {
+        template:'#bannatem',
+    }
+    Vue.component('my-app',APP )
+    Vue.component('my-banna',Banna)
+
+ const app = new Vue({
+     el:'#app',
+     data:{},
+    
+ })
+
+
+
+
+</script>
+</html>

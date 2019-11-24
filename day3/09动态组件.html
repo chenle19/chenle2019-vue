@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+            <button @click = " type = 'aaa' ">A组件</button>
+            <button @click = " type = 'bbb' ">B组件</button>
+            <button @click = " type = 'ccc' ">C组件</button>
+            <!-- <aaa></aaa>
+            <bbb></bbb>
+            <ccc></ccc> -->
+       <keep-alive include='aaa,bbb'> 
+               <component :is='type'></component>
+               -->
+        </keep-alive>
+          
+        </div>
+      
+</body>
+<template id="aaa">
+        <a>这里是aaa 
+            <input type="text"> 
+        </a>
+</template>
+<template id="bbb">
+        <a>这里是bbb<input type="text"> 
+        </a>
+
+</template>
+<template id="ccc">
+    <a>
+        这里是ccc<input type="text"> 
+    </a>
+</template>
+
+<script src='vue.js'></script>
+<script>
+    /*
+    动态组件默认情况下切换时都是先销毁掉原来的组件，再创建新的组件加入需要保留上一次的结果，避免组件的重新渲染，可以使用<keep-alive> 包裹动态管理器
+    定义组件时添加name选项，keep-alive 添加include属性，值为name选项，需要缓存的写进去 
+    keep-alive 会伴随有两个生命周期的钩子函数 avtivated deactivated
+    activated({ // 激活 后台应用程序正在使用})阿个tv剃
+    deactuvated(){ //隐藏 在后台应用中，但是不是关闭了的()}
+    
+    */
+  const AAA ={
+      template:'#aaa'
+  }
+  const BBB ={
+      template:'#bbb'
+  }
+  const CCC ={
+      template:'#ccc'
+  }
+
+ const app = new Vue({
+     el:'#app',
+     data:{
+         type:'aaa'
+     },
+     components:{
+         'aaa':AAA,
+         'bbb':BBB,
+         'ccc':CCC
+     }
+    
+ })
+
+
+
+
+</script>
+</html>

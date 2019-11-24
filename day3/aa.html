@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>  
+    <div id="as">
+        <my-app></my-app>
+        <button @click = " type = 'aaa' ">A组件</button>
+        <button @click = " type = 'bbb' ">B组件</button>
+        <button @click = " type = 'ccc' ">C组件</button>
+        <keep-alive include='aaa,bbb'>
+            <component :is='type'></component>
+        </keep-alive>
+    </div>
+    
+</body>
+<template id="a">
+    <a>我是父亲
+        <my-bpp :msg='aaa' @sendxiaoxi='getData'></my-bpp>
+        <my-cbb></my-cbb>
+    </a>
+</template>
+<template id="b">
+        <a>我是儿子---{{msg}},
+           
+            <button @click='sendData'>发送消息</button>
+            <button @click='getindex(1)'>1</button>
+            <button @click='getindex(2)'>2</button>
+            <button @click='getindex(3)'>3</button>
+            <button @click='getindex(4)'>4</button>
+         
+            
+        </a>
+</template>
+<template id="c">
+        <a> 这是第{{index}}图
+        </a>
+</template>
+<template id="aaa">
+        <a>这里是aaa 
+            <input type="text"> 
+        </a>
+</template>
+<template id="bbb">
+        <a>这里是bbb<input type="text"> 
+        </a>
+
+</template>
+<template id="ccc">
+    <a>
+        这里是ccc<input type="text"> 
+    </a>
+</template>
+
+<script src="vue.js"></script>
+
+<script>
+  const AAA ={
+      template:'#aaa'
+  }
+  const BBB ={
+      template:'#bbb'
+  }
+  const CCC ={
+      template:'#ccc'
+  }
+    const bus = new Vue();
+    const BPP = {
+        template:'#b',
+        props:['msg'],
+        methods:{
+            sendData(){
+                this.$emit('sendxiaoxi','我发送消息过来了爸爸')
+            },
+            getindex(index){
+                bus.$emit('sendindex',index)
+                
+            }
+        },
+        mounted(){
+         
+        }
+    }
+    const CPP = {
+        template:'#c',
+        data(){
+            return{
+                index:1
+            }
+        },
+        mounted(){
+           bus.$on('sendindex',(index)=>{
+               console.log(index);
+               this.index = index;
+           })
+        }
+    }
+    const APP = {
+        template:'#a',
+        data(){
+            return{
+                aaa:'这是爸爸留给你的遗产'
+            }
+        },
+        methods:{
+            getData(str){
+              console.log(str);
+            }
+        },
+        components:{
+            'my-bpp':BPP,
+            'my-cbb':CPP
+        }
+
+    }
+// Vue.component('myapp',APP);
+const app = new Vue({
+    el:'#as',
+    data:{
+        type:'aaa'
+    },
+    components:{
+        'my-app':APP,
+        'aaa':AAA,
+         'bbb':BBB,
+         'ccc':CCC
+    }
+})
+
+
+
+</script>
+</html>
